@@ -78,7 +78,7 @@ class Dellin
         if (isset($content['errors'])) {
             if (is_array($content['errors'])) {
                 foreach ($content['errors'] as $error) {
-                    $message = (is_array($error['fields'])) ? implode(' ', $error['fields']) . ' ' : $error['fields'] . ' ';
+                    $message = (isset($error['fields']) && is_array($error['fields'])) ? implode(' ', $error['fields']) . ' ' : $error['fields'] . ' ';
                     $message .= (isset($error['detail'])) ? $error['detail'] . ' ' : '';
                     $message .= (isset($error['title'])) ? $error['title'] . '. ' : '';
                 }

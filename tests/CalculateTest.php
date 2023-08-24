@@ -13,7 +13,7 @@ class CalculateTest extends \tests\TestBase
     public function testCalculate()
     {
         $request = new CalculateRequest();
-        $date = (new DateTimeImmutable('now'))->modify('-1 day');
+        $date = (new DateTimeImmutable('now'))->modify('+1 day');
 
         $derival = new PointParams();
         $derival->setAddress('г. Иркутск, ул. Розы Люксембург, 3А');
@@ -26,8 +26,8 @@ class CalculateTest extends \tests\TestBase
 
         $request->create(CalculateRequest::AUTO, $date, $derival, $arrival, $cargoList);
 
-        $reponse = $this->dellin->calculate($request);
+        $response = $this->dellin->calculate($request);
 
-        self::assertNotEmpty($reponse->getPrice());
+        self::assertNotEmpty($response->getPrice());
     }
 }
